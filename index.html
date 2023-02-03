@@ -1,66 +1,182 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">  
-        <link rel="stylesheet" href="qr.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>project by srinivas</title>
-        <style>
-            body{
-                display: flex;
-                padding: 0 10px;
-                min-height: 100vh;
-                align-items: center;
-                background-image: linear-gradient(90deg, #1ba287a6 10%, #b9e291 100%);
-                justify-content: center;
-                align-items: center;
-            }
-            .button-67 {
-  align-items: center;
-  background: #f5f5fa;
-  border: 0;
-  border-radius: 8px;
-  box-shadow: -10px -10px 30px 0 #fff,10px 10px 30px 0 #1d0dca17;
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">  
+    <link rel="stylesheet" href="qr.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project by srinivas</title>
+    <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  color: #2a1f62;
-  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+body{
   display: flex;
-  font-family: "Cascadia Code",Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;
-  font-size: 1rem;
+  padding: 0 10px;
+  min-height: 100vh;
+  align-items: center;
+  background-image: linear-gradient(135deg, #FAB2FF 10%, #1904E5 100%);
   justify-content: center;
-  line-height: 1.5rem;
-  padding: 15px;
-  position: relative;
-  text-align: left;
-  transition: .2s;
+}
+.wrapper{
+  height: 265px;
+  max-width: 410px;
+  background: #fff;
+  border-radius: 7px;
+  padding: 20px 25px 0;
+  transition: height 0.2s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.wrapper.active{
+  height: 530px;
+}
+header h1{
+  font-size: 21px;
+  font-weight: 500;
+}
+header p{
+  margin-top: 5px;
+  color: #575757;
+  font-size: 16px;
+}
+.wrapper .form{
+  margin: 20px 0 25px;
+}
+.form :where(input, button){
+  width: 100%;
+  height: 55px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  transition: 0.1s ease;
+}
+.form input{
+  font-size: 18px;
+  padding: 0 17px;
+  border: 1px solid #999;
+}
+.form input:focus{
+  box-shadow: 0 3px 6px rgba(0,0,0,0.13);
+}
+.form input::placeholder{
+  color: #999;
+}
+.button-89 {
+  --b: 3px;   /* border thickness */
+  --s: .45em; /* size of the corner */
+  --color: #373B44;
+  
+  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: .6em;
+  font-size: 16px;
+
+  border: 0;
+
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  white-space: pre;
-  width: max-content;
-  word-break: normal;
-  word-spacing: normal;
 }
 
-.button-67:hover {
-  background: #f8f8ff;
-  box-shadow: -15px -15px 30px 0 #fff, 15px 15px 30px 0 #1d0dca17;
+.button-89:hover,
+.button-89:focus-visible{
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: .05em;
 }
 
-@media (min-width: 768px) {
-  .button-67 {
-    padding: 24px;
+.button-89:active {
+  background: var(--color);
+  color: #fff;
+}
+.qr-code{
+  opacity: 0;
+  display: flex;
+  padding: 33px 0;
+  border-radius: 5px;
+  align-items: center;
+  pointer-events: none;
+  justify-content: center;
+  border: 1px solid #ccc;
+}
+.wrapper.active .qr-code{
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.5s 0.05s ease;
+}
+.qr-code img{
+  width: 170px;
+}
+
+@media (max-width: 430px){
+  .wrapper{
+    height: 255px;
+    padding: 16px 20px;
   }
+  .wrapper.active{
+    height: 510px;
+  }
+  header p{
+    color: #696969;
+  }
+  .form :where(input, button){
+    height: 52px;
+  }
+  .qr-code img{
+    width: 160px;
+  }  
 }
-    
-        </style>
-    </head>
-    <body>
-<center>
-    <button onclick="window.location.href = 'gen.html';" class="button-67" role="button">QR CODE SCANNER</button>
-    <br></br>
-    <button onclick="window.location.href = 'scn.html';" class="button-67" role="button">QR CODE GENERATOR</button>
-    </form>
-</center>
-    </body>
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>QR Code Generator</h1>
+        <p>Paste a url or enter text to create QR code</p>
+      </header>
+      <div class="form">
+      <input type="text" spellcheck="false" placeholder="Enter text or url"><br></br>
+      <button class="button-89" role="button"><span class="text">Generate</span></button>
+      </div>
+      <div class="qr-code">
+        <img src="" alt="qr-code">
+      </div>
+    </div>
+    <script>
+      const wrapper = document.querySelector(".wrapper"),
+qrInput = wrapper.querySelector(".form input"),
+generateBtn = wrapper.querySelector(".form button"),
+qrImg = wrapper.querySelector(".qr-code img");
+let preValue;
+
+generateBtn.addEventListener("click", () => {
+    let qrValue = qrInput.value.trim();
+    if(!qrValue || preValue === qrValue) return;
+    preValue = qrValue;
+    generateBtn.innerText = "Generating QR Code...";
+    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${qrValue}`;
+    qrImg.addEventListener("load", () => {
+        wrapper.classList.add("active");
+        generateBtn.innerText = "Generate QR Code";
+    });
+});
+
+qrInput.addEventListener("keyup", () => {
+    if(!qrInput.value.trim()) {
+        wrapper.classList.remove("active");
+        preValue = "";
+    }
+});
+    </script>
+  </body>
 </html>
