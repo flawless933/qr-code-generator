@@ -17,13 +17,13 @@ body{
   justify-content: center;
   min-height: 100vh;
   padding: 0 10px;
-  background-image: linear-gradient(135deg, #e8b2ff 10%, #04e5b4 100%);
+  background-image: linear-gradient( #e8b2ff 10%, #04e5b4 90%);
 }
 .wrapper{
   height: 270px;
   width: 420px;
   border-radius: 7px;
-  background: #0B85FF;
+  background: #5a5c5f;
   padding: 30px 30px 35px;
   transition: height 0.2s ease;
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
@@ -143,15 +143,15 @@ textarea:hover::-webkit-scrollbar-thumb{
         <input type="file" hidden>
         <img src="#" alt="qr-code">
         <div class="content">
-          <i class="fas fa-cloud-upload"></i>
+            <i class="fa-solid fa-barcode"></i>
           <p>Upload QR Code to Read</p>
         </div>
       </form>
       <div class="details">
         <textarea spellcheck="false" disabled></textarea>
         <div class="buttons">
-          <button class="close">Close</button>
-          <button class="copy">Copy Text</button>
+          <button class="close" role="button">Close</button>
+          <button class="copy" role="button">Copy Text</button>
         </div>
       </div>
     </div>
